@@ -8,7 +8,7 @@ import (
 var (
 	i            int     = 42
 	actorName    string  = "Actor"
-	companion    string  = "Nibba"
+	companion    string  = "amongus"
 	doctorNumber int     = 15125
 	time_spent   float64 = 0.1516
 
