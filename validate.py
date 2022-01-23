@@ -46,11 +46,13 @@ def check_tokens():
                 }
 
         r = requests.get("https://discordapp.com/api/v9/users/@me/library", headers=header)
-        
-        if r.status_code == 200:
+    
+        if r.status_code != 401:
             valid_token += 1
             valid_tokens.append(i)
+            print(changed3, " -- MIGHT BE VALID [+]\t\t-\t\tStatus code: ",r.status_code)
         else:
+            print(changed3, " -- IS NOT VALID [-]\t\t-\t\tStatus code: ",r.status_code)
             invalid_token += 1
 
     print("Valid tokens\t:\t{0}".format(valid_token))

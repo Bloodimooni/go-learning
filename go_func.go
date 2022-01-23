@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func main2() {
+func main() {
 	// main function
 
 	fmt.Println("\n", square(15125), "\n", root(64))

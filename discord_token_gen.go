@@ -11,16 +11,16 @@ import (
 
 func main() {
 
-	now := time.Now()
-	start_time_second := now.Second()
 	rand.Seed(time.Now().UnixNano())
-	fmt.Println("TOKENS\nHow many tokens do you want to generate? - ")
+	fmt.Println("How many tokens do you want to generate?")
 	var amount int
 	fmt.Scanf("%d", &amount)
 	var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 	var tokens = []string{}
 
-	fmt.Printf("Okay, I will generate %v tokens.", amount)
+	fmt.Printf("Okay, I will generate %v tokens.\nPlease wait...", amount)
+	now := time.Now()
+	start_time_second := now.Second()
 	for i := 0; i < amount; i++ {
 		// Make the string for "A"
 		a := make([]rune, 20)
@@ -60,10 +60,15 @@ func main() {
 		//fmt.Printf("Buffered: %d\n", writer.Buffered())
 
 	}
-
+	var time_it_took int
 	now2 := time.Now()
 	end_time_second := now2.Second()
-	fmt.Printf("DONE! -- Wrote %v tokens to file.\nThis took %v seconds\n\n\n", amount, end_time_second-start_time_second)
+	if end_time_second-start_time_second < 0 {
+		time_it_took = 60 + (end_time_second - start_time_second)
+	} else {
+		time_it_took = end_time_second - start_time_second
+	}
+	fmt.Printf("\n\nDONE! -- Wrote %v tokens to file.\nThis took %v seconds\n\n", amount, time_it_took)
 	writer.Flush()
 
 	//for y := 0; y < len(tokens); y++ {
